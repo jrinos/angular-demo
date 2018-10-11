@@ -1,0 +1,11 @@
+.selected {
+  background-color: #45EE50;
+}
+.container-bank {
+  padding: 1rem;
+}
+form {
+  margin:24px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}

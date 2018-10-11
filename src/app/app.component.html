@@ -1,0 +1,43 @@
+<div class="container">
+
+    <h2>Personal Finances</h2>
+    <hr>
+    <div>
+        <h3>Your accounts</h3>
+        <div *ngIf="_accounts.length==0" class="alert alert-info"> you dont have any accounts yet. Please add it.</div>
+        <div class="container-bank shadow-sm p-3 mb-5 rounded" *ngFor="let acc of _accounts, let i = index"
+          [ngClass]="{
+            selected:_selected[i],
+            otherCSSClass:otherProperty
+          }">
+          <h5>({{acc.title}}) ({{acc.id}})</h5>
+          <p>{{acc.description}}</p>
+          <p>Balance: <strong>{{acc.balance}}</strong></p>
+          <button (click)="removeAcc(i)">Delete</button>
+          <button (click)="select(i)">{{_selected[i] ? 'Deselect':'Select'}}</button>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+      <form class="col-md-6">
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input class="form-control" id="title" type="text" name="title" value="" #title>
+            </div>
+
+            <div class="form-group">
+              <label for="description">Description</label>
+              <input class="form-control" id="description" type="text" name="description" value="" #description>
+            </div>
+
+            <div class="form-group">
+              <label for="balance">Balance</label>
+              <input class="form-control" id="balance" type="number" name="balance" value="" #balance>
+            </div>
+
+            <div class="form-group">
+              <button (click)="createAcc(title,description,balance)" class="btn btn-default" type="button">create</button>
+            </div>
+      </form>
+    </div>
+</div>
